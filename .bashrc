@@ -9,7 +9,7 @@ if [ -f $HOME/.git-prompt.sh ]; then
         source $HOME/.git-prompt.sh
         PS1='\[\033[36m\][\u@\H:\w$(__git_ps1 " (%s)")]\n\$\[\033[0m\] '
 else
-        PS1='\[\033[36m\][\u@\H:\w$)]\n\$\[\033[0m\] '
+        PS1='\[\033[36m\][\u@\H:\w]\n\$\[\033[0m\] '
 fi
 
 if [ -f $HOME/.git-completion.bash ]; then

@@ -23,6 +23,7 @@ alias tmux='tmux -2'
 alias la='ls -la'
 
 #history
+export HISTFILE=~/.bash_history
 export HISTTIMEFORMAT="%y/%m/%d %H:%M:%S: "
 function share_history {
     history -a

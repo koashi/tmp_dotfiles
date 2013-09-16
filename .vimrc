@@ -1,11 +1,12 @@
+set nocompatible               " Be iMproved
+set encoding=utf-8
+
 " http://yomi322.hateblo.jp/entry/2012/06/20/225559
 function! s:has_plugin(plugin)
 	  return !empty(globpath(&runtimepath, 'plugin/'   . a:plugin . '.vim'))
 	    \   || !empty(globpath(&runtimepath, 'autoload/' . a:plugin . '.vim'))
 	    \   || !empty(globpath(&runtimepath, 'colors/'   . a:plugin . '.vim'))
 endfunction
-
-set nocompatible               " Be iMproved
 
 if filereadable(expand('~/.vim/bundle/neobundle.vim/autoload/neobundle.vim')) && v:version >= 702
 	
@@ -40,8 +41,6 @@ if filereadable(expand('~/.vim/bundle/neobundle.vim/autoload/neobundle.vim')) &&
 
 	" ...
 
-endif
-
 filetype plugin indent on     " Required!
 "
 " Brief help
@@ -51,6 +50,10 @@ filetype plugin indent on     " Required!
 
 " Installation check.
 NeoBundleCheck
+
+endif
+
+syntax enable
 
 "set 256 color
 set t_Co=256
@@ -64,3 +67,7 @@ endif
 
 "show line number
 set number
+
+set showmode
+set showcmd
+set cmdheight=2

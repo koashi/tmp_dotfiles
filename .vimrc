@@ -1,3 +1,5 @@
+" .vimrc
+
 set nocompatible               " Be iMproved
 set encoding=utf-8
 
@@ -64,18 +66,21 @@ endif
 
 syntax enable
 
-"set 256 color
+" Set 256 color
 set t_Co=256
 
-"set colorscheme
+" Set colorscheme
 if s:has_plugin('molokai')
 	colorscheme molokai
 else
 	colorscheme desert
 endif
 
-"show line number
+" Show line number
 set number
+
+" Set decimal
+set nrformats=
 
 set showmode
 set showcmd

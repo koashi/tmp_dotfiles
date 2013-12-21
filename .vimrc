@@ -23,7 +23,16 @@ if filereadable(expand('~/.vim/bundle/neobundle.vim/autoload/neobundle.vim')) &&
 
 	" Recommended to install
 	" After install, turn shell ~/.vim/bundle/vimproc, (n,g)make -f your_machines_makefile
-	NeoBundle 'Shougo/vimproc'
+	NeoBundle 'Shougo/vimproc', {
+	      \ 'build' : {
+	      \     'windows' : 'make -f make_mingw32.mak',
+	      \     'cygwin' : 'make -f make_cygwin.mak',
+	      \     'mac' : 'make -f make_mac.mak',
+	      \     'unix' : 'make -f make_unix.mak',
+	      \    },
+	      \ }
+	NeoBundle 'Shougo/unite.vim'
+	NeoBundle 'Shougo/vimfiler.vim'
 
 	" My Bundles here:
 	"

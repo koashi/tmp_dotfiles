@@ -1,6 +1,9 @@
 #!/bin/sh
 
-ln -s $HOME/git/dotfiles/.bash_profile $HOME
-ln -s $HOME/git/dotfiles/.bashrc $HOME
-ln -s $HOME/git/dotfiles/.vimrc $HOME
-ln -s $HOME/git/dotfiles/.tmux.conf $HOME
+# setup.sh
+
+# Symbolic link
+ln -s ./.bash_profile $HOME
+ln -s ./.bashrc $HOME
+ln -s ./.vimrc $HOME
+ln -s ./.tmux.conf $HOME

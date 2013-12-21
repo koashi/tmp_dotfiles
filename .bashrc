@@ -6,25 +6,25 @@ if [ -f /etc/bashrc ]; then
 fi
 
 if [ -f $HOME/.git-prompt.sh ]; then
-        source $HOME/.git-prompt.sh
+        . $HOME/.git-prompt.sh
         PS1='\[\033[36m\][\u@\H:\w$(__git_ps1 " (%s)")]\n\$\[\033[0m\] '
 else
         PS1='\[\033[36m\][\u@\H:\w]\n\$\[\033[0m\] '
 fi
 
 if [ -f $HOME/.git-completion.bash ]; then
-        source $HOME/.git-completion.bash
+        . $HOME/.git-completion.bash
 fi
 
 # User specific aliases and functions
 
-#alias
+# Alias
 alias tmux='tmux -2'
 alias la='ls -la'
 
-#history
-export HISTFILE=~/.bash_history
-export HISTTIMEFORMAT="%y/%m/%d %H:%M:%S: "
+# History
+HISTFILE=~/.bash_history
+HISTTIMEFORMAT="%y/%m/%d %H:%M:%S: "
 function share_history {
     history -a
     history -c
@@ -32,4 +32,7 @@ function share_history {
 }
 PROMPT_COMMAND='share_history'
 shopt -u histappend
-export HISTSIZE=300000
+HISTSIZE=300000
+
+# Set hostname 
+printf "\033k$HOSTNAME\033\\"

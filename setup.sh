@@ -2,8 +2,11 @@
 
 # setup.sh
 
+# Script path
+CURRENT=$(cd $(dirname $0) && pwd)
+
 # Symbolic link
-ln -s ./.bash_profile $HOME
-ln -s ./.bashrc $HOME
-ln -s ./.vimrc $HOME
-ln -s ./.tmux.conf $HOME
+ln -s ${CURRENT}/.bash_profile ~
+ln -s ${CURRENT}/.bashrc ~
+ln -s ${CURRENT}/.vimrc ~
+ln -s ${CURRENT}/.tmux.conf ~

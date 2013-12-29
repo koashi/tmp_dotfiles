@@ -16,10 +16,16 @@ if [ -f $HOME/.git-completion.bash ]; then
         . $HOME/.git-completion.bash
 fi
 
+# Mac
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+	. $(brew --prefix)/etc/bash_completion
+fi
+
 # User specific aliases and functions
 
 # Alias
 alias tmux='tmux -2'
+alias ll='ls -l'
 alias la='ls -la'
 
 # History

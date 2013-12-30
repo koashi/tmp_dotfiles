@@ -41,6 +41,7 @@ if filereadable(expand('~/.vim/bundle/neobundle.vim/autoload/neobundle.vim')) &&
 	" Note: You don't set neobundle setting in .gvimrc!
 	" Original repos on github
 	NeoBundle 'tomasr/molokai'
+	NeoBundle 'itchyny/lightline.vim'
 
 	" vim-scripts repos
 
@@ -66,7 +67,8 @@ endif
 
 syntax enable
 
-" Set 256 color
+" To enable 256 colors,
+" put this before setting the colorsheme
 set t_Co=256
 
 " Set colorscheme
@@ -78,6 +80,75 @@ endif
 
 " Show line number
 set number
+
+" Display status line
+set laststatus=2
+
+" lightline.vim
+let g:lightline = {
+			\ 'colorscheme': 'wombat',
+			\ 'mode_map': {'c': 'NORMAL'},
+			\ 'active': {
+			\   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]
+			\ },
+			\ 'component_function': {
+			\   'modified': 'MyModified',
+			\   'readonly': 'MyReadonly',
+			\   'fugitive': 'MyFugitive',
+			\   'filename': 'MyFilename',
+			\   'fileformat': 'MyFileformat',
+			\   'filetype': 'MyFiletype',
+			\   'fileencoding': 'MyFileencoding',
+			\   'mode': 'MyMode'
+			\ }
+			\ }
+
+function! MyModified()
+	return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+endfunction
+
+function! MyReadonly()
+	return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? 'x' : ''
+endfunction
+
+function! MyFilename()
+	return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
+				\ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
+				\  &ft == 'unite' ? unite#get_status_string() :
+				\  &ft == 'vimshell' ? vimshell#get_status_string() :
+				\ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
+				\ ('' != MyModified() ? ' ' . MyModified() : '')
+endfunction
+
+function! MyFugitive()
+	try
+		if &ft !~? 'vimfiler\|gundo' && exists('*fugitive#head')
+			return fugitive#head()
+		endif
+	catch
+	endtry
+	return ''
+endfunction
+
+function! MyFileformat()
+	return winwidth(0) > 70 ? &fileformat : ''
+endfunction
+
+function! MyFiletype()
+	return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
+endfunction
+
+function! MyFileencoding()
+	return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
+endfunction
+
+function! MyMode()
+	return winwidth(0) > 60 ? lightline#mode() : ''
+endfunction
+
+" Show tab, trail, eol, extends, precedes and nbsp
+set list
+set listchars=tab:▸\ ,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
 
 " Set decimal
 set nrformats=

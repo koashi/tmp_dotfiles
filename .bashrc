@@ -5,20 +5,25 @@ if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
-if [ -f $HOME/.git-prompt.sh ]; then
-        . $HOME/.git-prompt.sh
-        PS1='\[\033[36m\][\u@\H:\w$(__git_ps1 " (%s)")]\n\$\[\033[0m\] '
+# Source git-prompt
+if [ -f ~/.git-prompt.sh ]; then
+        . ~/.git-prompt.sh
+        PS1='\[\033[36m\][\u@\H:\w$(__git_ps1 " (%s)")]\[\033[0m\]\n\[\033[36m\]\$\[\033[0m\] '
 else
-        PS1='\[\033[36m\][\u@\H:\w]\n\$\[\033[0m\] '
+        PS1='\[\033[36m\][\u@\H:\w]\[\033[0m\]\n\[\033[36m\]\$\[\033[0m\] '
 fi
 
-if [ -f $HOME/.git-completion.bash ]; then
-        . $HOME/.git-completion.bash
+# Source git-completion
+if [ -f ~/.git-completion.bash ]; then
+        . ~/.git-completion.bash
 fi
 
-# Mac
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-	. $(brew --prefix)/etc/bash_completion
+# For Mac
+if [ $(uname) = "Darwin" ]; then
+	# Source bash_completion
+	if [ -f $(brew --prefix)/etc/bash_completion ]; then
+		. $(brew --prefix)/etc/bash_completion
+	fi
 fi
 
 # User specific aliases and functions
@@ -40,5 +45,6 @@ PROMPT_COMMAND='share_history'
 shopt -u histappend
 HISTSIZE=300000
 
-# Set hostname 
+# For tmux
+# Echo hostname
 printf "\033k$HOSTNAME\033\\"

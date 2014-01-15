@@ -9,6 +9,7 @@ fi
 if [ -f ~/.git-prompt.sh ]; then
         . ~/.git-prompt.sh
         PS1='\[\033[36m\][\u@\H:\w$(__git_ps1 " (%s)")]\[\033[0m\]\n\[\033[36m\]\$\[\033[0m\] '
+        PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
 else
         PS1='\[\033[36m\][\u@\H:\w]\[\033[0m\]\n\[\033[36m\]\$\[\033[0m\] '
 fi
@@ -29,9 +30,15 @@ fi
 # User specific aliases and functions
 
 # Alias
-alias tmux='tmux -2'
-alias ll='ls -l'
-alias la='ls -la'
+if [ $(uname) = "Darwin" ]; then
+        alias ls='ls -G'
+        alias ll='ls -lG'
+        alias la='ls -laG'
+else
+        alias tmux='tmux -2'
+        alias ll='ls -l'
+        alias la='ls -la'
+fi
 
 # History
 HISTFILE=~/.bash_history

@@ -30,12 +30,12 @@ fi
 # User specific aliases and functions
 
 # Alias
+alias tmux='tmux -2'
 if [ $(uname) = "Darwin" ]; then
         alias ls='ls -G'
         alias ll='ls -lG'
         alias la='ls -laG'
 else
-        alias tmux='tmux -2'
         alias ll='ls -l'
         alias la='ls -la'
 fi

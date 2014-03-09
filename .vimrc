@@ -147,6 +147,12 @@ function! MyMode()
 	return winwidth(0) > 60 ? lightline#mode() : ''
 endfunction
 
+" Converting tabs to 4 spaces
+set tabstop=4
+set autoindent
+set expandtab
+set shiftwidth=4
+
 " Show tab, trail, eol, extends, precedes and nbsp
 set list
 set listchars=tab:▸\ ,trail:-,eol:↲,extends:»,precedes:«,nbsp:%

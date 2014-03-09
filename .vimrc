@@ -41,6 +41,7 @@ if filereadable(expand('~/.vim/bundle/neobundle.vim/autoload/neobundle.vim')) &&
 	" Note: You don't set neobundle setting in .gvimrc!
 	" Original repos on github
 	NeoBundle 'tomasr/molokai'
+	NeoBundle 'jonathanfilip/vim-lucius'
 	NeoBundle 'itchyny/lightline.vim'
 
 	" vim-scripts repos

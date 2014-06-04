@@ -51,7 +51,3 @@ function share_history {
 PROMPT_COMMAND='share_history'
 shopt -u histappend
 HISTSIZE=300000
-
-# For tmux
-# Echo hostname
-printf "\033k$HOSTNAME\033\\"

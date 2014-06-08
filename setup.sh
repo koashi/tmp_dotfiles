@@ -13,14 +13,14 @@ ln -s ${CURRENT}/.gvimrc ~
 ln -s ${CURRENT}/.tmux.conf ~
 
 # Download git-completion and git-prompt
-if [ -x /usr/bin/curl ]; then
+if [ -x $(which curl) ]; then
     curl -o ~/.git-completion.bash https://raw.github.com/git/git/master/contrib/completion/git-completion.bash
     curl -o ~/.git-prompt.sh https://raw.github.com/git/git/master/contrib/completion/git-prompt.sh
 else
     echo 'curl not found'
 fi
 
-if [ -x /usr/bin/git ]; then
+if [ -x $(which git) ]; then
     # Install NeoBundle.vim
     if [ ! -d ~/.vim/bundle ]; then
         mkdir -p ~/.vim/bundle

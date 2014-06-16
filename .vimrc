@@ -5,64 +5,64 @@ set encoding=utf-8
 
 " http://yomi322.hateblo.jp/entry/2012/06/20/225559
 function! s:has_plugin(plugin)
-	  return !empty(globpath(&runtimepath, 'plugin/'   . a:plugin . '.vim'))
-	    \   || !empty(globpath(&runtimepath, 'autoload/' . a:plugin . '.vim'))
-	    \   || !empty(globpath(&runtimepath, 'colors/'   . a:plugin . '.vim'))
+    return !empty(globpath(&runtimepath, 'plugin/'   . a:plugin . '.vim'))
+                \   || !empty(globpath(&runtimepath, 'autoload/' . a:plugin . '.vim'))
+                \   || !empty(globpath(&runtimepath, 'colors/'   . a:plugin . '.vim'))
 endfunction
 
 if filereadable(expand('~/.vim/bundle/neobundle.vim/autoload/neobundle.vim')) && v:version >= 702
-	
-	if has('vim_starting')
-		set runtimepath+=~/.vim/bundle/neobundle.vim/
-	endif
 
-	let g:neobundle#types#git#default_protocol = "git"
+    if has('vim_starting')
+        set runtimepath+=~/.vim/bundle/neobundle.vim/
+    endif
 
-	call neobundle#rc(expand('~/.vim/bundle/'))
+    let g:neobundle#types#git#default_protocol = "git"
 
-	" Let NeoBundle manage NeoBundle
-	NeoBundleFetch 'Shougo/neobundle.vim'
+    call neobundle#rc(expand('~/.vim/bundle/'))
 
-	" Recommended to install
-	" After install, turn shell ~/.vim/bundle/vimproc, (n,g)make -f your_machines_makefile
-	NeoBundle 'Shougo/vimproc', {
-	      \ 'build' : {
-	      \     'windows' : 'make -f make_mingw32.mak',
-	      \     'cygwin' : 'make -f make_cygwin.mak',
-	      \     'mac' : 'make -f make_mac.mak',
-	      \     'unix' : 'make -f make_unix.mak',
-	      \    },
-	      \ }
-	NeoBundle 'Shougo/unite.vim'
-	NeoBundle 'Shougo/vimfiler.vim'
+    " Let NeoBundle manage NeoBundle
+    NeoBundleFetch 'Shougo/neobundle.vim'
 
-	" My Bundles here:
-	"
-	" Note: You don't set neobundle setting in .gvimrc!
-	" Original repos on github
-	NeoBundle 'tomasr/molokai'
-	NeoBundle 'jonathanfilip/vim-lucius'
-	NeoBundle 'itchyny/lightline.vim'
+    " Recommended to install
+    " After install, turn shell ~/.vim/bundle/vimproc, (n,g)make -f your_machines_makefile
+    NeoBundle 'Shougo/vimproc', {
+                \ 'build' : {
+                \     'windows' : 'make -f make_mingw32.mak',
+                \     'cygwin' : 'make -f make_cygwin.mak',
+                \     'mac' : 'make -f make_mac.mak',
+                \     'unix' : 'make -f make_unix.mak',
+                \    },
+                \ }
+    NeoBundle 'Shougo/unite.vim'
+    NeoBundle 'Shougo/vimfiler.vim'
 
-	" vim-scripts repos
+    " My Bundles here:
+    "
+    " Note: You don't set neobundle setting in .gvimrc!
+    " Original repos on github
+    NeoBundle 'tomasr/molokai'
+    NeoBundle 'jonathanfilip/vim-lucius'
+    NeoBundle 'itchyny/lightline.vim'
 
-	" Non github repos
+    " vim-scripts repos
 
-	" gist repos
+    " Non github repos
 
-	" Non git repos
+    " gist repos
 
-	" ...
+    " Non git repos
 
-filetype plugin indent on     " Required!
-"
-" Brief help
-" :NeoBundleList          - list configured bundles
-" :NeoBundleInstall(!)    - install(update) bundles
-" :NeoBundleClean(!)      - confirm(or auto-approve) removal of unused bundles
+    " ...
 
-" Installation check.
-NeoBundleCheck
+    filetype plugin indent on     " Required!
+    "
+    " Brief help
+    " :NeoBundleList          - list configured bundles
+    " :NeoBundleInstall(!)    - install(update) bundles
+    " :NeoBundleClean(!)      - confirm(or auto-approve) removal of unused bundles
+
+    " Installation check.
+    NeoBundleCheck
 
 endif
 
@@ -74,9 +74,9 @@ set t_Co=256
 
 " Set colorscheme
 if s:has_plugin('molokai')
-	colorscheme molokai
+    colorscheme molokai
 else
-	colorscheme desert
+    colorscheme desert
 endif
 
 " Show line number
@@ -87,64 +87,64 @@ set laststatus=2
 
 " lightline.vim
 let g:lightline = {
-			\ 'colorscheme': 'wombat',
-			\ 'mode_map': {'c': 'NORMAL'},
-			\ 'active': {
-			\   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]
-			\ },
-			\ 'component_function': {
-			\   'modified': 'MyModified',
-			\   'readonly': 'MyReadonly',
-			\   'fugitive': 'MyFugitive',
-			\   'filename': 'MyFilename',
-			\   'fileformat': 'MyFileformat',
-			\   'filetype': 'MyFiletype',
-			\   'fileencoding': 'MyFileencoding',
-			\   'mode': 'MyMode'
-			\ }
-			\ }
+            \ 'colorscheme': 'wombat',
+            \ 'mode_map': {'c': 'NORMAL'},
+            \ 'active': {
+            \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]
+            \ },
+            \ 'component_function': {
+            \   'modified': 'MyModified',
+            \   'readonly': 'MyReadonly',
+            \   'fugitive': 'MyFugitive',
+            \   'filename': 'MyFilename',
+            \   'fileformat': 'MyFileformat',
+            \   'filetype': 'MyFiletype',
+            \   'fileencoding': 'MyFileencoding',
+            \   'mode': 'MyMode'
+            \ }
+            \ }
 
 function! MyModified()
-	return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+    return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
 endfunction
 
 function! MyReadonly()
-	return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? 'x' : ''
+    return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? 'x' : ''
 endfunction
 
 function! MyFilename()
-	return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
-				\ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
-				\  &ft == 'unite' ? unite#get_status_string() :
-				\  &ft == 'vimshell' ? vimshell#get_status_string() :
-				\ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
-				\ ('' != MyModified() ? ' ' . MyModified() : '')
+    return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
+                \ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
+                \  &ft == 'unite' ? unite#get_status_string() :
+                \  &ft == 'vimshell' ? vimshell#get_status_string() :
+                \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
+                \ ('' != MyModified() ? ' ' . MyModified() : '')
 endfunction
 
 function! MyFugitive()
-	try
-		if &ft !~? 'vimfiler\|gundo' && exists('*fugitive#head')
-			return fugitive#head()
-		endif
-	catch
-	endtry
-	return ''
+    try
+        if &ft !~? 'vimfiler\|gundo' && exists('*fugitive#head')
+            return fugitive#head()
+        endif
+    catch
+    endtry
+    return ''
 endfunction
 
 function! MyFileformat()
-	return winwidth(0) > 70 ? &fileformat : ''
+    return winwidth(0) > 70 ? &fileformat : ''
 endfunction
 
 function! MyFiletype()
-	return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
+    return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
 endfunction
 
 function! MyFileencoding()
-	return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
+    return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
 endfunction
 
 function! MyMode()
-	return winwidth(0) > 60 ? lightline#mode() : ''
+    return winwidth(0) > 60 ? lightline#mode() : ''
 endfunction
 
 " Converting tabs to 4 spaces
@@ -163,3 +163,7 @@ set nrformats=
 set showmode
 set showcmd
 set cmdheight=2
+
+" Search options
+set incsearch
+set hlsearch

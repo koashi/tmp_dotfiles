@@ -35,6 +35,8 @@ if filereadable(expand('~/.vim/bundle/neobundle.vim/autoload/neobundle.vim')) &&
                 \ }
     NeoBundle 'Shougo/unite.vim'
     NeoBundle 'Shougo/vimfiler.vim'
+    NeoBundle 'Shougo/neocomplete.vim'
+    let g:neocomplete#enable_at_startup = 1
 
     " My Bundles here:
     "
